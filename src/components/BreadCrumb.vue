@@ -1,7 +1,7 @@
 <template>
-    <div class="row mb-3 border-bottom bg-dark">
-        <div class="col-12 p-2">
-            <a :href="item.path" v-for="(item, key) in breadCrumbList" :key="key">{{ item.name + ' / ' }}</a>
+    <div class="row my-3 border-bottom border-top border-dark">
+        <div class="col-auto p-1 mx-3">
+            <a :href="item.path" v-for="(item, key) in breadCrumbList" :key="key">{{ ' / ' + item.name }}</a>
         </div>
     </div>
 </template>

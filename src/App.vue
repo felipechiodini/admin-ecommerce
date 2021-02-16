@@ -7,4 +7,5 @@
 <style lang="scss">
   @import './assets/styles/variables';
   @import './assets/styles/bootstrap';
+  @import './assets/styles/global';
 </style>

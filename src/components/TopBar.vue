@@ -5,15 +5,13 @@
             <span>{{ user.name }}</span>
         </div>
         <div class="col-auto py-2" v-for="(item, key) in itemsMenu" :key="key">
-            <span @click="this.$router.push(item.path)">{{ item.name }}</span>
+            <a :href="item.path">{{ item.name }}</a>
         </div>
     </div>
 </template>
 
 <script>
 export default {
-
-
 
     data: () => {
         return {
@@ -29,6 +27,7 @@ export default {
                 { name: 'Banners', path: '/banners' },
                 { name: 'Cupons', path: '/cupons' },
                 { name: 'Condições de Pagamento', path: '/pagamentos' },
+                { name: 'Vagas', path: '/vagas' },
             ]
             
         }
