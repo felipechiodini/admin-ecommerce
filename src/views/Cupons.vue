@@ -31,7 +31,8 @@
             </div>
         </div>
 
-        <modal></modal>
+
+        <modal name="my-first-modal"></modal>
 
     </div>
 </template>
@@ -39,14 +40,12 @@
 <script>
 import TopBar from '../components/TopBar'
 import breadCrumb from '../components/BreadCrumb'
-import Modal from '../components/Modal'
 
 export default {
 
     components: {
         TopBar,
         breadCrumb,
-        Modal,
     },
 
     data: () => {
@@ -77,10 +76,7 @@ export default {
 
         showModalAdd() {
 
-            document.querySelector('#myModal').on('show.bs.modal', function (e) {
-                console.log(e)
-            })
-
+            this.$modal.show('my-first-modal');
         }
 
 
