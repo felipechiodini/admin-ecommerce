@@ -1,5 +1,5 @@
 <template>
-    <div class="row my-3 border-bottom border-top border-dark">
+    <div class="row my-3">
         <div class="col-auto p-1 mx-3">
             <a :href="item.path" v-for="(item, key) in breadCrumbList" :key="key">{{ ' / ' + item.name }}</a>
         </div>

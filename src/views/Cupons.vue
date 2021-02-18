@@ -14,7 +14,7 @@
                 <div class="row border border-dark rounded mb-2 p-2" v-for="(item, key) in cuponsList" :key="key">
                     <div class="col-11 d-flex justify-content-around">
                         <span>
-                            <b>Situação: </b>
+                            <b>Ativo: </b>
                             <span v-if="item.active"><i class="fas fa-check-circle text-success"></i></span>
                             <span v-else><i  class="fas fa-times-circle text-danger"></i></span>
                         </span>
@@ -32,7 +32,43 @@
         </div>
 
 
-        <modal name="my-first-modal"></modal>
+        <b-modal v-model="showModal" title="Remover Cupom">
+            <p>Tem certeza que deseja remover esse cupom?</p>
+        </b-modal>
+
+        <b-modal v-model="showModal" title="Novo Cupom">
+            <div class="row mb-3">
+                <div class="col-12">
+                    <b-form-checkbox
+                        id="checkbox-1"
+                        v-model="status"
+                        name="checkbox-1"
+                        value="accepted"
+                        unchecked-value="not_accepted"
+                        switch
+                    >
+                    Ativo</b-form-checkbox>
+                </div> 
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <label>Nome</label>
+                    <input type="text" class="form-control form-control-sm">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <label>Código</label>
+                    <input type="text" class="form-control form-control-sm">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <label>Desconto</label>
+                    <input type="text" class="form-control form-control-sm">
+                </div>
+            </div>
+        </b-modal>
 
     </div>
 </template>
@@ -40,22 +76,30 @@
 <script>
 import TopBar from '../components/TopBar'
 import breadCrumb from '../components/BreadCrumb'
+import { BModal } from 'bootstrap-vue'
+import { BFormCheckbox } from 'bootstrap-vue'
+import axios from 'axios'
 
 export default {
 
     components: {
         TopBar,
         breadCrumb,
+        BModal,
+        BFormCheckbox,
     },
 
     data: () => {
         return {
-            cuponsList: [
-                { active: false, name: 'Verão 2021', code: 'VERAO2021', discount: 5 },
-                { active: false, name: 'Verão 2021', code: 'VERAO2021', discount: 5 },
-                { active: true, name: 'Verão 2021', code: 'VERAO2021', discount: 5 },
-            ]
+            showModal: false,
+            cuponsList: [],
+
+            status: false
         }
+    },
+
+    mounted() {
+        axios.get('http://localhost:3000/cupon').then(response => (this.cuponsList = response.data))
     },
 
 
@@ -68,15 +112,12 @@ export default {
         },
 
         deleteItem(item) {
-
-            console.log(item)
-
+            axios.delete('http://localhost:3000/cupon/' + item.id).then(response => (this.cuponsList = response.data))
         },
 
 
         showModalAdd() {
-
-            this.$modal.show('my-first-modal');
+            this.showModal = !this.showModal
         }
 
 
