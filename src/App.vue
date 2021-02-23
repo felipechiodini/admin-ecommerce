@@ -4,6 +4,15 @@
   </div>
 </template>
 
+<script>
+export default {
+    metaInfo: {
+        title: 'Login',
+        titleTemplate: '%s | Admin Ecommerce'
+    }
+}
+</script>
+
 <style lang="scss">
   @import './assets/styles/variables';
   @import './assets/styles/bootstrap';

@@ -24,6 +24,9 @@ import TopBar from '../components/TopBar'
 import breadCrumb from '../components/BreadCrumb'
 
 export default {
+    metaInfo: {
+        title: 'Banners',
+    },
 
     components: {
         TopBar,

@@ -8,11 +8,14 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.2",
+    "apexcharts": "^3.25.0",
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "bootstrap-vue": "^2.21.2",
     "core-js": "^3.6.5",
     "vue": "^2.6.12",
+    "vue-apexcharts": "^1.6.0",
+    "vue-meta": "^2.4.0",
     "vue-router": "^3.2.0"
   },
   "devDependencies": {

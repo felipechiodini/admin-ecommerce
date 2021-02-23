@@ -13,6 +13,7 @@ CREATE TABLE user(
     id_group int unsigned,
     name VARCHAR(255),
     type enum('customer', 'admin'),
+    login VARCHAR(255),
     password VARCHAR(225),
     PRIMARY KEY(id),
     FOREIGN KEY(id_group) REFERENCES `group`(id)

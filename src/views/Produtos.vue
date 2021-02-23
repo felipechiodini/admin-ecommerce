@@ -30,12 +30,17 @@
 <script>
 import TopBar from '../components/TopBar'
 import breadCrumb from '../components/BreadCrumb'
+import productAdda from '../components/produtos/ProdutoAdda'
 
 export default {
+    metaInfo: {
+        title: 'Produtos',
+    },
 
     components: {
         TopBar,
-        breadCrumb
+        breadCrumb,
+        productAdda
     },
 
     data: () => {
