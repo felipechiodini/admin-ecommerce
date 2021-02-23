@@ -81,16 +81,48 @@ CREATE TABLE product(
 );
 
 CREATE TABLE image(
-    id int unsigned auto_increment,
+    id int unsigned not null auto_increment,
     id_product int unsigned,
     base_64 text,
     PRIMARY KEY(id),
     FOREIGN KEY(id_product) REFERENCES product(id)
 );
 
+CREATE TABLE role(
+    id int unsigned not null auto_increment,
+    name varchar(255),
+    PRIMARY KEY(id)
+);
+
 CREATE TABLE job(
-    id int unsigned auto_increment,
+    id int unsigned not null auto_increment,
+    id_address int unsigned not null,
+    id_role int unsigned not null,
     active int,
     name VARCHAR(255),
+    requirements varchar(255),
+    activities varchar(255),
+    differential varchar(255),
+    PRIMARY KEY(id),
+    FOREIGN KEY(id_address) REFERENCES address(id),
+    FOREIGN KEY(id_role) REFERENCES role(id)
+);
+
+CREATE TABLE curriculum(
+    id int unsigned not null auto_increment,
+    id_job int unsigned not null,
+    name varchar(255),
+    email varchar(255),
+    phone varchar(255),
+    city varchar(255),
+    state varchar(255),
+    curriculum_file varchar(255),
+    PRIMARY KEY(id),
+    FOREIGN KEY(id_job) REFERENCES job(id)
+);
+
+CREATE TABLE benefits(
+    id int unsigned not null auto_increment,
+    name varchar(255),
     PRIMARY KEY(id)
 );
