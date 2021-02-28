@@ -1,6 +1,6 @@
 <template>
     <div class="row my-2">
-        <div class="col-auto p-1 mx-3 border rounded">
+        <div class="col-auto p-1 mx-3 border rounded bg-white">
             <span v-for="(item, key) in breadCrumbList" :key="key">
                 <a :href="item.path" >{{ item.name }}</a>
                 <span class="mx-1">/</span>

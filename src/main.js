@@ -22,6 +22,12 @@ Vue.use(VueApexCharts)
 
 Vue.component('apexchart', VueApexCharts)
 
+import TopBar from '../src/components/TopBar'
+Vue.component('top-bar', TopBar)
+
+import BreadCrumb from '../src/components/BreadCrumb'
+Vue.component('bread-crumb', BreadCrumb)
+
 
 
 new Vue({

@@ -1,14 +1,7 @@
 <template>
-    <div class="row d-flex justify-content-center border-bottom border-dark bg-light py-2">
+    <div class="row d-flex justify-content-center py-2">
 
-        <div class="col-auto border border-dark rounded mr-5 d-flex justify-content-center p-1 pointer">
-            <div class="col-auto">
-                <div class="user-image"></div>
-            </div>
-            <div class="col-auto d-flex align-items-center">
-                <span>{{ user.name }}</span>
-            </div>
-        </div>
+        
 
         <div class="col-auto d-flex align-items-end" v-for="(item, key) in itemsMenu" :key="key">
             <a class="links-topbar" :href="item.path">{{ item.name }}</a>
@@ -38,7 +31,13 @@ export default {
                 { name: 'Banners', path: '/banners' },
                 { name: 'Cupons', path: '/cupons' },
                 { name: 'Condições de Pagamento', path: '/pagamentos' },
-                { name: 'Vagas', path: '/vagas' },
+
+
+                { name: 'Trabalhe Conosco', path: '/trabalhe_conosco', items: [
+                    { name: 'Vagas', path: '/trabalhe_conosco/vagas' },
+                    { name: 'Setores', path: '/trabalhe_conosco/vagas'  },
+                    { name: 'Benefícios' },
+                ] },
             ]
         }
     },

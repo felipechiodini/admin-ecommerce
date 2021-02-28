@@ -1,33 +1,33 @@
 <template>
-    <div class="container-fluid">
-        <top-bar></top-bar>
+    <div>
+        
         <bread-crumb></bread-crumb>
 
         <div class="row d-flex justify-content-center">
             <div class="col-11">
                 <div class="row d-flex justify-content-around">
 
-                    <div class="col-5 border border-dark rounded mb-3">
+                    <div class="col-5 border  mb-3 bg-white">
                         <h1 class="display-6">{{ 'Numeros de Usuários cadastrados: ' + qtdUsers }}</h1>
                     </div>
 
-                    <div class="col-5 border border-dark rounded mb-3">
+                    <div class="col-5 border  mb-3 bg-white">
                         <apexchart width="500" type="bar" :options="options" :series="series"></apexchart>
                     </div>
                     
-                    <div class="col-5 border border-dark rounded mb-3">
+                    <div class="col-5 border  mb-3 bg-white">
                         <apexchart width="500" type="bar" :options="options" :series="series"></apexchart>
                     </div>
 
-                    <div class="col-5 border border-dark rounded mb-3">
+                    <div class="col-5 border  mb-3 bg-white">
                         <apexchart width="500" type="bar" :options="options" :series="series"></apexchart>
                     </div>
 
-                    <div class="col-5 border border-dark rounded mb-3">
+                    <div class="col-5 border  mb-3 bg-white">
                         <apexchart width="500" type="bar" :options="options" :series="series"></apexchart>
                     </div>
 
-                    <div class="col-5 border border-dark rounded mb-3">
+                    <div class="col-5 border  mb-3 bg-white">
                         <apexchart width="500" type="bar" :options="options" :series="series"></apexchart>
                     </div>
 
@@ -42,6 +42,7 @@
 
 <script>
 import TopBar from '../components/TopBar'
+import SideBar from '../components/SideBar'
 import breadCrumb from '../components/BreadCrumb'
 
 export default {
@@ -73,6 +74,7 @@ export default {
     components: {
         TopBar,
         breadCrumb,
+        SideBar
     }
 }
 </script>

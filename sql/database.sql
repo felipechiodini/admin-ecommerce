@@ -3,14 +3,14 @@ CREATE DATABASE ecommerce;
 USE ecommerce;
 
 CREATE TABLE `group`(
-    id int unsigned auto_increment,
+    id int UNSIGNED AUTO_INCREMENT,
     name VARCHAR(255),
     PRIMARY KEY(id)
 );
 
 CREATE TABLE user(
-    id int unsigned auto_increment,
-    id_group int unsigned,
+    id int UNSIGNED AUTO_INCREMENT,
+    id_group int UNSIGNED,
     name VARCHAR(255),
     type enum('customer', 'admin'),
     login VARCHAR(255),
@@ -20,7 +20,7 @@ CREATE TABLE user(
 );
 
 CREATE TABLE `group_has_permission`(
-    id int unsigned auto_increment,
+    id int UNSIGNED AUTO_INCREMENT,
     name VARCHAR(255),
     type enum('customer', 'admin'),
     password VARCHAR(225),
@@ -28,7 +28,7 @@ CREATE TABLE `group_has_permission`(
 );
 
 CREATE TABLE permission(
-    id int unsigned auto_increment,
+    id int UNSIGNED AUTO_INCREMENT,
     name VARCHAR(255),
     type enum('customer', 'admin'),
     password VARCHAR(225),
@@ -36,28 +36,27 @@ CREATE TABLE permission(
 );
 
 CREATE TABLE address(
-    id int unsigned auto_increment,
-    id_user int unsigned,
-    complement VARCHAR(255),
+    `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
+    country VARCHAR(255),
     street VARCHAR(255),
+    complement VARCHAR(255),
     cep VARCHAR(255),
     number int,
-    PRIMARY KEY(id),
-    FOREIGN KEY(id_user) REFERENCES user(id)
+    PRIMARY KEY(`id`)
 );
 
 CREATE TABLE telephone(
-    id int unsigned auto_increment,
-    id_user int unsigned,
-    number int unsigned,
-    ddd int unsigned,
-    code int unsigned,
+    id int UNSIGNED AUTO_INCREMENT,
+    id_user int UNSIGNED,
+    number int UNSIGNED,
+    ddd int UNSIGNED,
+    code int UNSIGNED,
     PRIMARY KEY(id),
     FOREIGN KEY(id_user) REFERENCES user(id)
 );
 
 CREATE TABLE coupon(
-    id int unsigned auto_increment,
+    id int UNSIGNED AUTO_INCREMENT,
     active int,
     name VARCHAR(255),
     code VARCHAR(255),
@@ -66,38 +65,38 @@ CREATE TABLE coupon(
 );
 
 CREATE TABLE user_has_coupon(
-    id int unsigned auto_increment,
-    id_user int unsigned,
-    id_coupon int unsigned,
+    id int UNSIGNED AUTO_INCREMENT,
+    id_user int UNSIGNED,
+    id_coupon int UNSIGNED,
     PRIMARY KEY(id),
     FOREIGN KEY(id_user) REFERENCES user(id)
 );
 
 CREATE TABLE product(
-    id int unsigned auto_increment,
+    id int UNSIGNED AUTO_INCREMENT,
     name VARCHAR(255),
     price int,
     PRIMARY KEY(id)
 );
 
 CREATE TABLE image(
-    id int unsigned not null auto_increment,
-    id_product int unsigned,
+    id int UNSIGNED NOT NULL AUTO_INCREMENT,
+    id_product int UNSIGNED,
     base_64 text,
     PRIMARY KEY(id),
     FOREIGN KEY(id_product) REFERENCES product(id)
 );
 
 CREATE TABLE role(
-    id int unsigned not null auto_increment,
+    id int UNSIGNED NOT NULL AUTO_INCREMENT,
     name varchar(255),
     PRIMARY KEY(id)
 );
 
 CREATE TABLE job(
-    id int unsigned not null auto_increment,
-    id_address int unsigned not null,
-    id_role int unsigned not null,
+    id int UNSIGNED NOT NULL AUTO_INCREMENT,
+    id_address int UNSIGNED NOT NULL,
+    id_role int UNSIGNED NOT NULL,
     active int,
     name VARCHAR(255),
     requirements varchar(255),
@@ -108,9 +107,18 @@ CREATE TABLE job(
     FOREIGN KEY(id_role) REFERENCES role(id)
 );
 
+CREATE TABLE job_has_address(
+    id int UNSIGNED NOT NULL AUTO_INCREMENT,
+    id_address int UNSIGNED NOT NULL,
+    id_job int UNSIGNED NOT NULL,
+    PRIMARY KEY(id),
+    FOREIGN KEY(id_address) REFERENCES address(id),
+    FOREIGN KEY(id_job) REFERENCES job(id)
+);
+
 CREATE TABLE curriculum(
-    id int unsigned not null auto_increment,
-    id_job int unsigned not null,
+    id int UNSIGNED NOT NULL AUTO_INCREMENT,
+    id_job int UNSIGNED NOT NULL,
     name varchar(255),
     email varchar(255),
     phone varchar(255),
@@ -122,7 +130,7 @@ CREATE TABLE curriculum(
 );
 
 CREATE TABLE benefits(
-    id int unsigned not null auto_increment,
+    id int UNSIGNED NOT NULL AUTO_INCREMENT,
     name varchar(255),
     PRIMARY KEY(id)
 );

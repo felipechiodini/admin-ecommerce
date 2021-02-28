@@ -6,11 +6,27 @@ import Menus from '../views/Menus.vue'
 import Produtos from '../views/Produtos.vue'
 import Cupons from '../views/cupons/Cupons.vue'
 import Banners from '../views/Banners.vue'
-import Vagas from '../views/Vagas.vue'
+
+import TrabalheConosco from '../views/trabalhe_conosco/TrabalheConosco'
+import Vagas from '../views/trabalhe_conosco/Vagas'
+import Setores from '../views/trabalhe_conosco/Setores'
+import Beneficios from '../views/trabalhe_conosco/Beneficios'
 
 Vue.use(VueRouter)
 
 const routes = [
+  {
+    path: '/trabalhe_conosco',
+    component: TrabalheConosco,
+    children: [
+        { path: 'vagas', component: Vagas },
+        { path: 'setores', component: Setores },
+        { path: 'beneficios', component: Beneficios }
+    ]
+  },
+
+
+
   {
     path: '/login',
     name: 'Login',
@@ -46,11 +62,6 @@ const routes = [
     name: 'Condições de pagamento',
     component: Cupons
   },
-  {
-    path: '/vagas',
-    name: 'Vagas',
-    component: Vagas
-  }
 ]
 
 const router = new VueRouter({
